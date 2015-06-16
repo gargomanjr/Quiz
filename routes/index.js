@@ -12,7 +12,12 @@ router.get('/author', function(req, res) {
   res.render('author', {});
 });
 
-router.get('/quizes/answer',quiz_Controller.answer);
-router.get('/quizes/question',quiz_Controller.question);
+//router.get('/quizes/question', quiz_Controller.question);
+//router.get('/quizes/answer', quiz_Controller.answer);
+
+// Definición de rutas de /quizes
+router.get('/quizes', quiz_Controller.index);
+router.get('/quizes/:quizId(\\d+)', quiz_Controller.show);
+router.get('/quizes/:quizId(\\d+)/answer', quiz_Controller.answer);
 
 module.exports = router;
