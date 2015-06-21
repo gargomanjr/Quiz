@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var partials = require('express-partials');
+var methodOverride = require('method-override');
 var app = express();
 app.use(favicon(__dirname + '/public/favicon.ico'));
 // view engine setup
@@ -19,7 +20,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(methodOverride('_method'));
 app.use('/', routes);
 
 // catch 404 and forward to error handler

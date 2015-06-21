@@ -21,6 +21,8 @@ router.param('quizId', quiz_Controller.load); // autoload :quizId
 router.get('/quizes', quiz_Controller.index);
 router.get('/quizes/:quizId(\\d+)', quiz_Controller.show);
 router.get('/quizes/new', quiz_Controller.new);
+router.get('/quizes/:quizId(\\d+)/edit', quiz_Controller.edit);
+router.put('/quizes/:quizId(\\d+)', quiz_Controller.update);
 router.post('/quizes/create',  quiz_Controller.create);
 router.get('/quizes/:quizId(\\d+)/answer', quiz_Controller.answer);
 
