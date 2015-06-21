@@ -5,11 +5,11 @@ var quiz_Controller = require('../controllers/quiz_controller');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Quiz' });
+  res.render('index', { title: 'Quiz',errors:[] });
 });
 
 router.get('/author', function(req, res) {
-  res.render('author', {});
+  res.render('author', {errors:[]});
 });
 
 //router.get('/quizes/question', quiz_Controller.question);
