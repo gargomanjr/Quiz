@@ -101,3 +101,9 @@ exports.answer = function(req, res) {
 		res.render('quizes/answer', {quiz:req.quiz, respuesta: 'Incorrecto',errors:[] });	
 	}	
 };
+
+exports.destroy = function(req, res) {
+	req.quiz.destroy().then( function() {
+	res.redirect('/quizes');
+	}).catch(function(error){next(error)});
+};
