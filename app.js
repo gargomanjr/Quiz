@@ -31,7 +31,12 @@ app.use(function(req, res, next) {
 	if (!req.path.match(/\/login|\/logout/)) {
 		req.session.redir = req.path;
 	}
-
+	//valido si hay session
+	if (req.session.user) {
+		var timeout = 120000;
+		//cambio la fecha en la que expira la session
+		req.session.cookie.expires = new Date(Date.now()+timeout);
+	}
 	// Hacer visible req.session en las vistas
 	res.locals.session = req.session;
 	next();

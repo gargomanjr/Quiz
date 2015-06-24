@@ -1,0 +1,24 @@
+
+<h2>Estadísticas de Quiz</h2><br>
+<p>
+<% var numeroPreguntas =0 %>
+<% var numeroComentarios =0 %>
+<% var preguntasConComentarios =0 %>
+<%for(index in quizes){%>
+	<%var numeroPreguntas = numeroPreguntas+1%>
+	<%if(quizes[index].comments.length){%>
+		<%for(index2 in quizes[index].comments){%>
+			<%var numeroComentarios = numeroComentarios+1%>
+		<%}%>
+		<%var preguntasConComentarios = preguntasConComentarios+1%>
+	<%}%>
+
+<%}%> 
+<p>
+	<strong>Número de preguntas: <%=numeroPreguntas%></strong><p>
+	<strong>Número de comentarios: <%=numeroComentarios%></strong><p>
+	<strong>Número de comentarios/pregunta: <%=numeroComentarios/numeroPreguntas%></strong><p>
+	<strong>Número de preguntas con comentarios: <%=preguntasConComentarios%></strong><p>
+	<strong>Número de preguntas sin comentarios: <%=numeroPreguntas-preguntasConComentarios%></strong><p>
+</p>
+

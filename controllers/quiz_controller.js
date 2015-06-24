@@ -8,6 +8,20 @@ exports.question = function(req, res) {
 };
 */
 
+
+exports.stadistics = function(req, res) {
+	models.Quiz.findAll({
+		include: [{
+				model: models.Comment
+			}]
+		}).then(function(quizes) {
+			console.log(quizes);
+			res.render('quizes/stadistics', { quizes: quizes, errors:[]});
+		}
+	).catch(function(error) { next(error);});
+};
+
+
 // Autoload :id
 exports.load = function(req, res, next, quizId) {
 	models.Quiz.find({
