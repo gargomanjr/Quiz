@@ -5,6 +5,14 @@ exports.new = function(req, res) {
 	res.render('sessions/new', {errors: errors});
 };
 
+// MW de autorización de accesos HTTP restringidos
+exports.loginRequired = function(req, res, next){
+	if (req.session.user) {
+		next();
+	} else {
+		res.redirect('/login');
+	}
+};
 
 // POST /login -- Crear la sesion si usuario se autentica
 exports.create = function(req, res) {

@@ -21,11 +21,11 @@ router.param('quizId', quiz_Controller.load); // autoload :quizId
 // Definición de rutas de /quizes
 router.get('/quizes', quiz_Controller.index);
 router.get('/quizes/:quizId(\\d+)', quiz_Controller.show);
-router.get('/quizes/new', quiz_Controller.new);
-router.get('/quizes/:quizId(\\d+)/edit', quiz_Controller.edit);
-router.put('/quizes/:quizId(\\d+)', quiz_Controller.update);
-router.post('/quizes/create',  quiz_Controller.create);
-router.delete('/quizes/:quizId(\\d+)', quiz_Controller.destroy);
+router.get('/quizes/new',sessionController.loginRequired, quiz_Controller.new);
+router.get('/quizes/:quizId(\\d+)/edit',sessionController.loginRequired, quiz_Controller.edit);
+router.put('/quizes/:quizId(\\d+)',sessionController.loginRequired, quiz_Controller.update);
+router.post('/quizes/create',sessionController.loginRequired,  quiz_Controller.create);
+router.delete('/quizes/:quizId(\\d+)',sessionController.loginRequired, quiz_Controller.destroy);
 router.get('/quizes/:quizId(\\d+)/answer', quiz_Controller.answer);
 
 router.get('/quizes/:quizId(\\d+)/comments/new', commentController.new);
